@@ -4,6 +4,13 @@ All notable changes to the Farmers Market plugin.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.1.1] — 2026-10-13
+
+### Fixed
+- Stallholders are no longer shot by NPCs from KpucTaJl's NpcSpawn (BetterNpc and the
+  other plugins built on it). Those NPCs choose targets without asking the game's usual
+  hook, so the stallholder guard now answers their own one too.
+
 ## [0.1.0] — 2026-10-04
 
 First release. Runs on a live server, where placing a stall at a shop unit and opening its

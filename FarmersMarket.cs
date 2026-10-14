@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Oxide.Plugins
 {
-    [Info("Farmers Market", "LowPopLabs", "0.1.0")]
+    [Info("Farmers Market", "LowPopLabs", "0.1.1")]
     [Description("Stallholder NPCs who buy what a farm produces (crops, clones, eggs, honey, milk, meat) for scrap and sell seeds and farm supplies. Clones with good genes fetch more, prices dip as a stall fills up on one item, and a daily limit keeps the income steady.")]
     public class FarmersMarket : RustPlugin
     {
@@ -681,6 +681,7 @@ namespace Oxide.Plugins
             Unsubscribe(nameof(OnPlayerInput));
             Unsubscribe(nameof(OnEntityTakeDamage));
             Unsubscribe(nameof(OnNpcTarget));
+            Unsubscribe(nameof(OnCustomNpcTarget));
             UnsubscribeShopHooks();
             Puts($"FarmersMarket v{Version} loaded - by LowPopLabs - ko-fi.com/lowpoplabs");
         }
@@ -741,6 +742,15 @@ namespace Oxide.Plugins
         private object OnNpcTarget(BaseEntity npc, BaseEntity target)
         {
             if (IsStallholder(npc) || IsStallholder(target)) return true;
+            return null;
+        }
+
+        // KpucTaJl's NpcSpawn (BetterNpc and friends) picks targets itself and never raises
+        // OnNpcTarget; it asks this hook instead and only honours a bool (false = never target).
+        // A stallholder has a Steam-range id, so without this it lands in NpcSpawn's player bucket.
+        private object OnCustomNpcTarget(BaseEntity npc, BaseEntity target)
+        {
+            if (IsStallholder(target)) return false;
             return null;
         }
 
@@ -1003,6 +1013,7 @@ namespace Oxide.Plugins
                 Subscribe(nameof(OnPlayerInput));
                 Subscribe(nameof(OnEntityTakeDamage));
                 Subscribe(nameof(OnNpcTarget));
+                Subscribe(nameof(OnCustomNpcTarget));
                 if (config.FaceRange > 0f) faceTimer = timer.Every(0.3f, FaceTick);
             }
             else
@@ -1010,6 +1021,7 @@ namespace Oxide.Plugins
                 Unsubscribe(nameof(OnPlayerInput));
                 Unsubscribe(nameof(OnEntityTakeDamage));
                 Unsubscribe(nameof(OnNpcTarget));
+                Unsubscribe(nameof(OnCustomNpcTarget));
             }
         }
 
