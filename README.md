@@ -10,12 +10,12 @@ It is meant as a steady income rather than a fast one: slower per hour than a mo
 run, but safe and repeatable. A daily limit per player and prices that dip when a stall
 is flooded with one item keep it that way.
 
-> **Status: 0.1.0, first release.** It runs on a live server, where placing stalls and
+> **Status: 0.1.1.** It runs on a live server, where placing stalls and
 > opening their panels have been checked. Trading has had little play so far: expect to
 > tune the default prices, and please report anything odd.
 
 <!-- lpl:links -->
-**[Download v0.1.0](https://github.com/lowpoplabs/FarmersMarket/releases/latest)** · **Flyer:** [web](https://lowpoplabs.github.io/flyers/FarmersMarket.html) / [PDF](FarmersMarket-Flyer.pdf) · **[Changelog](CHANGELOG.md)** · **[Ko-fi](https://ko-fi.com/lowpoplabs)**
+**[Download v0.1.1](https://github.com/lowpoplabs/FarmersMarket/releases/latest)** · **Flyer:** [web](https://lowpoplabs.github.io/flyers/FarmersMarket.html) / [PDF](FarmersMarket-Flyer.pdf) · **[Changelog](CHANGELOG.md)** · **[Ko-fi](https://ko-fi.com/lowpoplabs)**
 <!-- /lpl:links -->
 
 ## How to use (in-game)
